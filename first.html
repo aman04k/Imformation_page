@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Left Panel Navigation</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    #left-panel {
+      width: 200px;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+
+    #content {
+      flex-grow: 1;
+      padding: 20px;
+    }
+
+    /* Style for the navigation links */
+    .nav-link {
+      display: block;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    /* Style for the active link */
+    .active {
+      font-weight: bold;
+    }
+  </style>
+  <script>
+    // Function to show content based on the clicked link
+    function showContent(contentId) {
+      // Hide all content elements
+      var contentElements = document.getElementsByClassName("content");
+      for (var i = 0; i < contentElements.length; i++) {
+        contentElements[i].style.display = "none";
+      }
+
+      // Show the selected content
+      document.getElementById(contentId).style.display = "block";
+
+      // Set the active link
+      var navLinks = document.getElementsByClassName("nav-link");
+      for (var j = 0; j < navLinks.length; j++) {
+        navLinks[j].classList.remove("active");
+      }
+      document.getElementById(contentId + "-link").classList.add("active");
+    }
+  </script>
+</head>
+<body>
+  <div id="left-panel">
+    <div class="nav-link active" id="home-link" onclick="showContent('home')">Home</div>
+    <div class="nav-link" id="contact-link" onclick="showContent('contact')">Contact</div>
+    <div class="nav-link" id="information-link" onclick="showContent('information')">Information</div>
+    <div class="nav-link" id="guide-link" onclick="showContent('guide')">Guide</div>
+  </div>
+  <div id="content">
+    <div class="content" id="home">
+      <h2>Welcome to the Home Page</h2>
+      <p>This is the home page content.</p>
+    </div>
+    <div class="content" id="contact" style="display: none;">
+      <h2>Contact Information</h2>
+      <p>Here is the contact information.</p>
+    </div>
+    <div class="content" id="information" style="display: none;">
+      <h2>Information Page</h2>
+      <p>This is some information.</p>
+    </div>
+    <div class="content" id="guide" style="display: none;">
+      <h2>Guide Page</h2>
+      <p>This is the guide page content.</p>
+    </div>
+  </div>
+</body>
+</html>
